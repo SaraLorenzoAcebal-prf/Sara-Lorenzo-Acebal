@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Lorenzo — Desarrolladora de software</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sara Lorenzo</h1>
+        <button id="menu-toggle-btn" class="menu-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="certifications.html">Certificaciones</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contacto</a>
+            <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">◐ claro</button>
+        </nav>
+    </header>
+    <div id="nav-overlay" class="nav-overlay"></div>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-eyebrow">// Desarrolladora de software</p>
+                <h2>Construyo aplicaciones web de extremo a extremo, del backend a la interfaz.</h2>
+                <p class="hero-desc">
+                    Este espacio reúne mis proyectos, certificaciones y notas técnicas —
+                    una versión detallada de mi CV, con el código y los documentos a un clic.
+                </p>
+                <div class="hero-actions">
+                    <a href="projects.html" class="btn btn-primary">Ver proyectos</a>
+                    <a href="certifications.html" class="btn">Ver certificaciones</a>
+                    <a href="contact.html" class="btn">Hablemos</a>
+                </div>
+            </div>
+            <img src="img/foto-perfil.jpg" alt="Sara Lorenzo" class="hero-photo">
+        </section>
+
+        <div class="quick-stats" id="quick-stats">
+            <div class="quick-stat"><strong id="stat-projects">—</strong><span>proyectos publicados</span></div>
+            <div class="quick-stat"><strong id="stat-certifications">—</strong><span>certificaciones</span></div>
+            <div class="quick-stat"><strong id="stat-posts">—</strong><span>entradas en el blog</span></div>
+        </div>
+
+        <section class="profile-section">
+            <div class="section-heading">
+                <p class="hero-eyebrow">// Sobre mi perfil</p>
+                <h2>Una mirada rapida a mi recorrido</h2>
+            </div>
+            <div class="profile-grid">
+                <article class="profile-card">
+                    <span class="profile-icon">01</span>
+                    <h3>Estudios</h3>
+                    <p>Formacion continua en desarrollo de aplicaciones web, arquitectura de software y buenas practicas.</p>
+                </article>
+                <article class="profile-card">
+                    <span class="profile-icon">02</span>
+                    <h3>Lenguajes y tecnologias</h3>
+                    <p>Java, Spring Boot, JavaScript, HTML, CSS, SQL y herramientas modernas para crear productos solidos.</p>
+                </article>
+                <article class="profile-card">
+                    <span class="profile-icon">03</span>
+                    <h3>Experiencia</h3>
+                    <p>Desarrollo de soluciones de extremo a extremo, desde el modelado del backend hasta una interfaz clara.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="home-preview">
+            <div class="section-heading section-heading-inline">
+                <div>
+                    <p class="hero-eyebrow">// Trabajo reciente</p>
+                    <h2>Proyectos destacados</h2>
+                </div>
+                <a href="projects.html" class="text-link">Ver todos →</a>
+            </div>
+            <div id="featured-projects" class="card-grid home-card-grid">
+                <p class="empty-state">Cargando proyectos...</p>
+            </div>
+        </section>
+
+        <section class="home-preview">
+            <div class="section-heading section-heading-inline">
+                <div>
+                    <p class="hero-eyebrow">// Aprendizaje continuo</p>
+                    <h2>Certificaciones</h2>
+                </div>
+                <a href="certifications.html" class="text-link">Ver todas →</a>
+            </div>
+            <div id="featured-certifications" class="cert-list">
+                <p class="empty-state">Cargando certificaciones...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Sara Lorenzo</p>
+        <div class="footer-links">
+            <a href="mailto:saralorenzoacebal05@gmail.com">Email</a>
+            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

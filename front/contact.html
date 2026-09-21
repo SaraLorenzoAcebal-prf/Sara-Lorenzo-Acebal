@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Sara Lorenzo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sara Lorenzo</h1>
+        <button id="menu-toggle-btn" class="menu-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="certifications.html">Certificaciones</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html" class="active">Contacto</a>
+            <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">◐ claro</button>
+        </nav>
+    </header>
+    <div id="nav-overlay" class="nav-overlay"></div>
+
+    <main>
+        <h2 class="page-title">Hablemos</h2>
+        <p class="page-subtitle">Cuéntame tu idea y me pondré en contacto contigo.</p>
+        <form id="contact-form" class="contact-form">
+            <label for="name">Nombre y apellidos <span aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" maxlength="120" required autocomplete="name">
+
+            <label for="company">Empresa <span class="optional">(opcional)</span></label>
+            <input id="company" name="company" type="text" maxlength="120" autocomplete="organization">
+
+            <label for="subject">Asunto <span aria-hidden="true">*</span></label>
+            <input id="subject" name="subject" type="text" maxlength="160" required>
+
+            <label for="ideas">Ideas para futuros proyectos <span aria-hidden="true">*</span></label>
+            <textarea id="ideas" name="ideas" rows="7" maxlength="4000" required></textarea>
+
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2026 Sara Lorenzo</p>
+        <div class="footer-links">
+            <a href="mailto:saralorenzoacebal05@gmail.com">Email</a>
+            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

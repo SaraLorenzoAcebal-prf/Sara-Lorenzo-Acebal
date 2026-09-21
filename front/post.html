@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — Sara Lorenzo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sara Lorenzo</h1>
+        <button id="menu-toggle-btn" class="menu-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="certifications.html">Certificaciones</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contacto</a>
+            <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">◐ claro</button>
+        </nav>
+    </header>
+    <div id="nav-overlay" class="nav-overlay"></div>
+
+    <main>
+        <a href="blog.html" class="btn" style="margin-bottom: 2rem; display: inline-block;">← Volver al blog</a>
+        <div id="post-container">
+            <p class="empty-state">Cargando post...</p>
+        </div>
+    </main>
+
+    <script src="js/safe.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/post.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <main style="max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;">
+        <div class="admin-header">
+            <h2 class="page-title" style="margin-bottom:0;">Panel admin</h2>
+            <button class="admin-logout" onclick="logout()">Cerrar sesión</button>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="posts">Posts</button>
+            <button class="admin-tab" data-tab="projects">Proyectos</button>
+            <button class="admin-tab" data-tab="certifications">Certificaciones</button>
+        </div>
+
+        <!-- --- PESTAÑA POSTS --- -->
+        <section id="tab-posts" class="admin-panel">
+            <button class="btn btn-primary admin-new-btn" onclick="showPostForm()">+ Nuevo post</button>
+
+            <form id="post-form" class="admin-form-panel" hidden>
+                <input type="hidden" id="post-id">
+                <label for="post-title">Título</label>
+                <input type="text" id="post-title" required>
+
+                <label for="post-excerpt">Resumen</label>
+                <input type="text" id="post-excerpt">
+
+                <label for="post-content">Contenido</label>
+                <textarea id="post-content" required></textarea>
+
+                <label for="post-cover-file">Imagen de portada</label>
+                <input type="file" id="post-cover-file" accept="image/*">
+                <input type="hidden" id="post-cover">
+                <p id="post-cover-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="post-publish">
+                    <label for="post-publish" style="margin:0;">Publicar ahora</label>
+                </div>
+
+                <div class="admin-form-actions">
+                    <button type="button" class="cancel-btn" onclick="hidePostForm()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+
+            <table class="admin-table">
+                <thead>
+                    <tr><th>Título</th><th>Estado</th><th>Fecha</th><th></th></tr>
+                </thead>
+                <tbody id="posts-table-body">
+                    <tr><td colspan="4">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- --- PESTAÑA PROJECTS (placeholder por ahora) --- -->
+        <section id="tab-projects" class="admin-panel" hidden>
+            <button class="btn btn-primary admin-new-btn" onclick="showProjectForm()">+ Nuevo proyecto</button>
+
+            <form id="project-form" class="admin-form-panel" hidden>
+                <input type="hidden" id="project-id">
+                <label for="project-title">Título</label>
+                <input type="text" id="project-title" required>
+
+                <label for="project-description">Descripción breve</label>
+                <input type="text" id="project-description">
+
+                <label for="project-content">Contenido detallado</label>
+                <textarea id="project-content" required></textarea>
+
+                <label for="project-technologies">Tecnologías (separadas por comas)</label>
+                <input type="text" id="project-technologies" placeholder="React, Spring Boot, MySQL">
+
+                <label for="project-repo">URL del repositorio</label>
+                <input type="text" id="project-repo">
+
+                <label for="project-demo">URL de la demo</label>
+                <input type="text" id="project-demo">
+
+                <label for="project-cover-file">Imagen de portada</label>
+                <input type="file" id="project-cover-file" accept="image/*">
+                <input type="hidden" id="project-cover">
+                <p id="project-cover-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="project-publish">
+                    <label for="project-publish" style="margin:0;">Publicar ahora</label>
+                </div>
+
+                <div class="admin-form-actions">
+                    <button type="button" class="cancel-btn" onclick="hideProjectForm()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+
+            <table class="admin-table">
+                <thead>
+                    <tr><th>Título</th><th>Estado</th><th>Fecha</th><th></th></tr>
+                </thead>
+                <tbody id="projects-table-body">
+                    <tr><td colspan="4">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- --- PESTAÑA CERTIFICATIONS (placeholder por ahora) --- -->
+        <section id="tab-certifications" class="admin-panel" hidden>
+        <button class="btn btn-primary admin-new-btn" onclick="showCertForm()">+ Nueva certificación</button>
+
+        <form id="cert-form" class="admin-form-panel" hidden>
+                <input type="hidden" id="cert-id">
+                <label for="cert-title">Título</label>
+                <input type="text" id="cert-title" required>
+
+                <label for="cert-issuer">Emisor</label>
+                <input type="text" id="cert-issuer" required>
+
+                <label for="cert-issue-date">Fecha de emisión</label>
+                <input type="date" id="cert-issue-date" required>
+
+                <label for="cert-expiration-date">Fecha de caducidad (opcional)</label>
+                <input type="date" id="cert-expiration-date">
+
+                <label for="cert-skills">Conocimientos aprendidos</label>
+                <textarea id="cert-skills" placeholder="Qué aprendiste con este certificado..."></textarea>
+
+                <label for="cert-credential-url">URL de verificación (opcional)</label>
+                <input type="text" id="cert-credential-url">
+
+                <label for="cert-logo-file">Logo del emisor</label>
+                <input type="file" id="cert-logo-file" accept="image/*">
+                <input type="hidden" id="cert-logo">
+                <p id="cert-logo-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+
+                <label for="cert-document-file">Documento del certificado (PDF o imagen)</label>
+                <input type="file" id="cert-document-file" accept="application/pdf,image/*">
+                <input type="hidden" id="cert-document">
+                <p id="cert-document-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+
+                <div class="admin-form-actions">
+                    <button type="button" class="cancel-btn" onclick="hideCertForm()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+        </form>
+
+        <table class="admin-table">
+            <thead>
+                <tr><th>Título</th><th>Emisor</th><th>Fecha</th><th></th></tr>
+            </thead>
+            <tbody id="certifications-table-body">
+                <tr><td colspan="4">Cargando...</td></tr>
+            </tbody>
+        </table>
+    </section>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/admin/auth.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+</body>
+</html>
