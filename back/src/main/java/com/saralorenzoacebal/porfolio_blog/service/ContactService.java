@@ -21,16 +21,19 @@ public class ContactService {
     public void send(ContactRequestDTO request) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(recipient);
+        message.setReplyTo(request.email());
         message.setSubject("Contacto del portfolio: " + request.subject());
         message.setText("""
                 Nombre y apellidos: %s
+                Correo electrónico: %s
                 Empresa: %s
 
                 Ideas para futuros proyectos:
                 %s
                 """.formatted(request.name(),
+                request.email(),
                 request.company() == null || request.company().isBlank() ? "No indicada" : request.company(),
-                request.ideas()));
+                request.ideas() == null || request.ideas().isBlank() ? "No indicadas" : request.ideas()));
 
         mailSender.send(message);
     }

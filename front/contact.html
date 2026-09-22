@@ -31,14 +31,17 @@
             <label for="name">Nombre y apellidos <span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" maxlength="120" required autocomplete="name">
 
+            <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" maxlength="254" required autocomplete="email">
+
             <label for="company">Empresa <span class="optional">(opcional)</span></label>
             <input id="company" name="company" type="text" maxlength="120" autocomplete="organization">
 
             <label for="subject">Asunto <span aria-hidden="true">*</span></label>
             <input id="subject" name="subject" type="text" maxlength="160" required>
 
-            <label for="ideas">Ideas para futuros proyectos <span aria-hidden="true">*</span></label>
-            <textarea id="ideas" name="ideas" rows="7" maxlength="4000" required></textarea>
+            <label for="ideas">Ideas para futuros proyectos <span class="optional">(opcional)</span></label>
+            <textarea id="ideas" name="ideas" rows="7" maxlength="4000"></textarea>
 
             <button type="submit" class="btn btn-primary">Enviar mensaje</button>
             <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
