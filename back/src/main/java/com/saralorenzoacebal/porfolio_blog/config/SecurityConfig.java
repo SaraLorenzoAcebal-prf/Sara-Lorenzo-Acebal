@@ -28,7 +28,8 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         .headers(headers -> headers
             .contentSecurityPolicy(csp -> csp.policyDirectives(
                 "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; " +
-                "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'"))
+                "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; " +
+                "connect-src 'self' http://localhost:8080 http://127.0.0.1:8080"))
             .frameOptions(frame -> frame.deny())
             .httpStrictTransportSecurity(hsts -> hsts.includeSubDomains(true).maxAgeInSeconds(31536000)))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

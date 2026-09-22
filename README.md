@@ -23,7 +23,11 @@ $env:DB_PASSWORD="tu-password-de-mysql"
 $env:ADMIN_USERNAME="admin"
 $env:ADMIN_PASSWORD="tu-password-de-admin"
 $env:JWT_SECRET="una-clave-aleatoria-de-al-menos-32-caracteres"
-$env:MAIL_PASSWORD="tu-password-de-aplicacion-de-gmail"
+$env:MAIL_USERNAME="tu-cuenta-de-gmail"
+$env:GOOGLE_CLIENT_ID="tu-client-id"
+$env:GOOGLE_CLIENT_SECRET="tu-client-secret"
+$env:GOOGLE_REFRESH_TOKEN="tu-refresh-token"
+$env:CONTACT_RECIPIENT="tu-cuenta-de-gmail"
 ```
 
 3. Arranca el backend:
@@ -36,6 +40,11 @@ cd back
 4. Sirve `front` con Live Server en `http://localhost:5500`.
 
 El formulario de contacto envía los mensajes a `saralorenzoacebal05@gmail.com`.
+
+Para el formulario de contacto, habilita Gmail API en Google Cloud y genera un
+`refresh token` con el alcance `https://www.googleapis.com/auth/gmail.send`.
+Configura el client ID, el client secret y el refresh token mediante variables
+de entorno. No guardes esos valores en el repositorio.
 
 ## Pruebas
 
