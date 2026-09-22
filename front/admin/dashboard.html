@@ -25,7 +25,7 @@
         <section id="tab-posts" class="admin-panel">
             <button class="btn btn-primary admin-new-btn" onclick="showPostForm()">+ Nuevo post</button>
 
-            <form id="post-form" class="admin-form-panel" hidden>
+            <form id="post-form" class="admin-form-panel" action="#" onsubmit="return false;" hidden>
                 <input type="hidden" id="post-id">
                 <label for="post-title">Título</label>
                 <input type="text" id="post-title" required>
@@ -39,7 +39,7 @@
                 <label for="post-cover-file">Imagen de portada</label>
                 <input type="file" id="post-cover-file" accept="image/*">
                 <input type="hidden" id="post-cover">
-                <p id="post-cover-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+                <div id="post-cover-preview" class="file-preview" aria-live="polite"></div>
 
                 <div class="checkbox-row">
                     <input type="checkbox" id="post-publish">
@@ -66,7 +66,7 @@
         <section id="tab-projects" class="admin-panel" hidden>
             <button class="btn btn-primary admin-new-btn" onclick="showProjectForm()">+ Nuevo proyecto</button>
 
-            <form id="project-form" class="admin-form-panel" hidden>
+            <form id="project-form" class="admin-form-panel" action="#" onsubmit="return false;" hidden>
                 <input type="hidden" id="project-id">
                 <label for="project-title">Título</label>
                 <input type="text" id="project-title" required>
@@ -89,7 +89,7 @@
                 <label for="project-cover-file">Imagen de portada</label>
                 <input type="file" id="project-cover-file" accept="image/*">
                 <input type="hidden" id="project-cover">
-                <p id="project-cover-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+                <div id="project-cover-preview" class="file-preview" aria-live="polite"></div>
 
                 <div class="checkbox-row">
                     <input type="checkbox" id="project-publish">
@@ -116,7 +116,7 @@
         <section id="tab-certifications" class="admin-panel" hidden>
         <button class="btn btn-primary admin-new-btn" onclick="showCertForm()">+ Nueva certificación</button>
 
-        <form id="cert-form" class="admin-form-panel" hidden>
+        <form id="cert-form" class="admin-form-panel" action="#" onsubmit="return false;" hidden>
                 <input type="hidden" id="cert-id">
                 <label for="cert-title">Título</label>
                 <input type="text" id="cert-title" required>
@@ -139,12 +139,12 @@
                 <label for="cert-logo-file">Logo del emisor</label>
                 <input type="file" id="cert-logo-file" accept="image/*">
                 <input type="hidden" id="cert-logo">
-                <p id="cert-logo-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+                <div id="cert-logo-preview" class="file-preview" aria-live="polite"></div>
 
                 <label for="cert-document-file">Documento del certificado (PDF o imagen)</label>
                 <input type="file" id="cert-document-file" accept="application/pdf,image/*">
                 <input type="hidden" id="cert-document">
-                <p id="cert-document-preview" style="font-size:0.8rem; color: var(--text-muted); margin-top:0.25rem;"></p>
+                <div id="cert-document-preview" class="file-preview" aria-live="polite"></div>
 
                 <div class="admin-form-actions">
                     <button type="button" class="cancel-btn" onclick="hideCertForm()">Cancelar</button>

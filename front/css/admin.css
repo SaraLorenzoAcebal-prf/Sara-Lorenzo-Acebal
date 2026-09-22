@@ -187,6 +187,29 @@
     font-family: var(--font-body);
 }
 
+.file-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.file-preview img {
+    display: block;
+    max-width: 240px;
+    max-height: 160px;
+    object-fit: contain;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+}
+
+.file-preview a {
+    color: var(--accent);
+}
+
 .checkbox-row {
     display: flex;
     align-items: center;

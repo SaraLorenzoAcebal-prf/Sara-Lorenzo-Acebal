@@ -1,5 +1,50 @@
 requireAuth(); // redirige a login.html si no hay token
 
+const FORM_DRAFT_KEY = 'admin_form_draft';
+
+function saveFormDraft(form) {
+    const values = {};
+    form.querySelectorAll('input, textarea').forEach(field => {
+        if (field.type !== 'file') {
+            values[field.id] = field.type === 'checkbox' ? field.checked : field.value;
+        }
+    });
+    sessionStorage.setItem(FORM_DRAFT_KEY, JSON.stringify({
+        formId: form.id,
+        values
+    }));
+}
+
+function restoreFormDraft() {
+    const rawDraft = sessionStorage.getItem(FORM_DRAFT_KEY);
+    if (!rawDraft) return;
+
+    try {
+        const draft = JSON.parse(rawDraft);
+        const form = document.getElementById(draft.formId);
+        if (!form) return;
+
+        form.hidden = false;
+        Object.entries(draft.values).forEach(([id, value]) => {
+            const field = document.getElementById(id);
+            if (!field) return;
+            if (field.type === 'checkbox') {
+                field.checked = value;
+            } else {
+                field.value = value;
+            }
+        });
+        sessionStorage.removeItem(FORM_DRAFT_KEY);
+    } catch (error) {
+        sessionStorage.removeItem(FORM_DRAFT_KEY);
+        console.error('No se pudo restaurar el formulario', error);
+    }
+}
+
+document.querySelectorAll('.admin-form-panel').forEach(form => {
+    form.addEventListener('input', () => saveFormDraft(form));
+});
+
 // --- Cambio de pestañas ---
 
 document.querySelectorAll('.admin-tab').forEach(tab => {
@@ -224,20 +269,56 @@ function setupCoverUpload(fileInputId, hiddenInputId, previewId) {
     const hiddenInput = document.getElementById(hiddenInputId);
     const preview = document.getElementById(previewId);
 
-    fileInput.addEventListener('change', async () => {
+    fileInput.addEventListener('change', async (event) => {
+        event.preventDefault();
         const file = fileInput.files[0];
         if (!file) return;
 
-        preview.textContent = 'Subiendo...';
+        saveFormDraft(fileInput.form);
+        const localPreviewUrl = URL.createObjectURL(file);
+        renderFilePreview(preview, file, localPreviewUrl, 'Seleccionado');
+        hiddenInput.value = '';
+
         try {
             const path = await uploadFile(file);
             hiddenInput.value = path;
-            preview.textContent = 'Subido: ' + path;
+            saveFormDraft(fileInput.form);
+            renderFilePreview(preview, file, getAssetUrl(path), 'Subido');
         } catch (error) {
-            preview.textContent = 'Error al subir la imagen';
+            preview.textContent = 'Error al subir el archivo: ' + error.message;
             console.error(error);
         }
     });
+}
+
+function getAssetUrl(path) {
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    return `${API_BASE_URL.replace(/\/api$/, '')}${path}`;
+}
+
+function renderFilePreview(container, file, url, status) {
+    container.replaceChildren();
+
+    const statusText = document.createElement('span');
+    statusText.textContent = `${status}: ${file.name}`;
+    container.appendChild(statusText);
+
+    if (file.type.startsWith('image/')) {
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = `Vista previa de ${file.name}`;
+        container.appendChild(image);
+        return;
+    }
+
+    if (file.type === 'application/pdf') {
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Abrir vista previa del PDF';
+        container.appendChild(link);
+    }
 }
 
 setupCoverUpload('post-cover-file', 'post-cover', 'post-cover-preview');
@@ -352,3 +433,5 @@ async function deleteCert(id) {
 
 setupCoverUpload('cert-logo-file', 'cert-logo', 'cert-logo-preview');
 setupCoverUpload('cert-document-file', 'cert-document', 'cert-document-preview');
+
+restoreFormDraft();
