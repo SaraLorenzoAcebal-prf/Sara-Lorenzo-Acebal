@@ -33,7 +33,8 @@ public class FileUploadController {
         }
 
         try {
-            String extension = ALLOWED_TYPES.get(file.getContentType());
+            String contentType = file.getContentType();
+            String extension = ALLOWED_TYPES.get(contentType);
             if (extension == null) {
                 return ResponseEntity.badRequest()
                         .body(Map.of("error", "Tipo de archivo no permitido"));

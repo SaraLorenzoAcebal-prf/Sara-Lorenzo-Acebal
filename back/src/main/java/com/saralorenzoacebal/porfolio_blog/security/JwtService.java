@@ -20,7 +20,7 @@ public class JwtService {
     public JwtService(@Value("${app.security.jwt-secret:}") String configuredSecret) {
         if (configuredSecret == null || configuredSecret.length() < 32) {
             logger.warn("JWT_SECRET no está configurado: se usará una clave temporal solo para desarrollo");
-            this.secretKey = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
+            this.secretKey = Jwts.SIG.HS256.key().build();
             return;
         }
         this.secretKey = Keys.hmacShaKeyFor(configuredSecret.getBytes(StandardCharsets.UTF_8));

@@ -33,7 +33,7 @@ function renderFeaturedProjects(projects) {
     container.innerHTML = featured.length
         ? featured.map(project => `
             <article class="card">
-                ${project.coverImage ? `<img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">` : ''}
+                ${project.coverImage ? `<img src="${safeUrl(project.coverImage)}" alt="${escapeHtml(project.title)}">` : ''}
                 <div class="card-body">
                     <h3>${escapeHtml(project.title)}</h3>
                     <p>${escapeHtml(project.description)}</p>
@@ -54,7 +54,7 @@ function renderFeaturedCertifications(certifications) {
                     <h3>${escapeHtml(cert.title)}</h3>
                     <p class="cert-meta">${escapeHtml(cert.issuer)}</p>
                 </div>
-                ${cert.documentPath ? `<a href="${escapeHtml(cert.documentPath)}" target="_blank" rel="noopener noreferrer" class="btn">Ver documento</a>` : ''}
+                ${cert.documentPath ? `<a href="${safeUrl(cert.documentPath)}" target="_blank" rel="noopener noreferrer" class="btn">Ver documento</a>` : ''}
             </article>
         `).join('')
         : '<p class="empty-state">Todavia no hay certificaciones publicadas.</p>';
