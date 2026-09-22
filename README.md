@@ -23,7 +23,7 @@ $env:DB_PASSWORD="tu-password-de-mysql"
 $env:ADMIN_USERNAME="admin"
 $env:ADMIN_PASSWORD="tu-password-de-admin"
 $env:JWT_SECRET="una-clave-aleatoria-de-al-menos-32-caracteres"
-$env:MAIL_APP_PASSWORD="tu-password-de-aplicacion-de-gmail"
+$env:MAIL_PASSWORD="tu-password-de-aplicacion-de-gmail"
 ```
 
 3. Arranca el backend:
