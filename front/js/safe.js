@@ -6,6 +6,9 @@ function escapeHtml(value) {
 
 function safeUrl(value) {
     try {
+        if (typeof value === 'string' && value.startsWith('/uploads/')) {
+            return `${API_BASE_URL.replace(/\/api$/, '')}${value}`;
+        }
         const url = new URL(value, window.location.origin);
         return ['http:', 'https:'].includes(url.protocol) ? url.href : '#';
     } catch {
